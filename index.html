@@ -36,7 +36,8 @@ h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;margin
 .top.scrolled{border-color:var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .brand{display:flex;align-items:center;gap:10px;font:600 15px/1 var(--display);text-decoration:none}
-.brand i{width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font:700 13px/1 var(--display);font-style:normal}
+.brand i img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.brand i{overflow:hidden;width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font:700 13px/1 var(--display);font-style:normal}
 .btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font:600 15px/1 var(--body);border-radius:999px;padding:15px 22px;transition:transform .2s,box-shadow .2s,background .2s}
 .btn-main{background:var(--accent);color:#fff;box-shadow:0 12px 26px -14px var(--accent)}
 .btn-main:hover{transform:translateY(-2px)}
@@ -213,7 +214,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
   const init = (D.name || '?').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
   const ava = D.photo ? `<img src="${esc(D.photo)}" alt="">` : `<b>${esc(init)}</b>`;
 
-  $('brandInit').textContent = init; $('brandName').textContent = D.name;
+  D.photo ? $('brandInit').innerHTML = `<img src="${esc(D.photo)}" alt="">` : $('brandInit').textContent = init; $('brandName').textContent = D.name;
   $('hello').innerHTML = `${ava}<span>Привет, я ${esc(first)}</span>`;
   $('h1').innerHTML = D.h1 || `Сайты для малого бизнеса${D.city ? ` в <em>${esc(D.cityIn || D.city)}</em>` : ''}`;
   $('lead').textContent = D.lead || 'Соберу готовое демо вашего сайта до разговора – вы смотрите результат, а потом решаете.';
