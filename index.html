@@ -192,7 +192,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
     <div>
       <div class="eyebrow" style="color:rgba(255,255,255,.6)">Написать</div>
       <h2 id="finalTitle">Покажу демо вашего сайта</h2>
-      <p>Нажмите на мессенджер – сообщение уже набрано, останется отправить. Отвечаю в течение дня.</p>
+      <p>Нажмите на мессенджер – текст сообщения подставится или скопируется сам, останется вставить и отправить. Отвечаю в течение дня.</p>
       <div class="cta" data-cta></div>
     </div>
     <div class="chat" aria-hidden="true">
@@ -247,7 +247,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
     max: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5A9.5 9.5 0 0 0 2.5 12c0 1.9.6 3.7 1.5 5.2L3 21l3.9-1a9.5 9.5 0 1 0 5.1-17.5zm-4 6.2h2l2 3.4 2-3.4h2v6.6h-1.8v-3.9l-1.8 3h-.8l-1.8-3v3.9H8z"/></svg>'
   };
   const links = [];
-  if (M.telegram) links.push({ k: 'telegram', label: 'Telegram', href: `https://t.me/${String(M.telegram).replace(/^@|https?:\/\/t\.me\//g, '')}?text=${enc}` });
+  if (M.telegram) links.push({ k: 'telegram', label: 'Telegram', href: `https://t.me/${String(M.telegram).replace(/^@|https?:\/\/t\.me\//g, '')}`, copy: true });
   if (M.whatsapp) links.push({ k: 'whatsapp', label: 'WhatsApp', href: `https://wa.me/${String(M.whatsapp).replace(/\D/g, '')}?text=${enc}` });
   if (M.max) links.push({ k: 'max', label: 'MAX', href: M.max, copy: true });
   // бот-продавец: работы, цены и бриф круглые сутки (скилл «Бот-продавец»)
@@ -257,7 +257,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
   const toast = (t) => { const el = $('toast'); el.textContent = t; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 3200); };
   document.addEventListener('click', (e) => {
     const a = e.target.closest('[data-copy]'); if (!a) return;
-    try { navigator.clipboard.writeText(msg); toast('Текст сообщения скопирован – вставьте его в чат MAX'); } catch (_) {}
+    try { navigator.clipboard.writeText(msg); toast('Текст сообщения скопирован – вставьте его в чат'); } catch (_) {}
   });
 
   // живой телефон
