@@ -192,7 +192,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
     <div>
       <div class="eyebrow" style="color:rgba(255,255,255,.6)">Написать</div>
       <h2 id="finalTitle">Покажу демо вашего сайта</h2>
-      <p>Нажмите на мессенджер – текст сообщения подставится или скопируется сам, останется вставить и отправить. Отвечаю в течение дня.</p>
+      <p>Нажмите на мессенджер: в WhatsApp и Telegram текст сообщения подставится сам. Если Telegram открылся без текста – он уже скопирован, останется вставить и отправить. Отвечаю в течение дня.</p>
       <div class="cta" data-cta></div>
     </div>
     <div class="chat" aria-hidden="true">
@@ -249,7 +249,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
   const links = [];
   // бот-продавец: работы, цены и бриф круглые сутки (скилл «Бот-продавец»)
   if (M.bot) links.push({ k: 'telegram', label: 'Бот: работы и заявка', href: M.bot.startsWith('http') ? M.bot : `https://t.me/${M.bot.replace(/^@/, '')}` });
-  if (M.telegram) links.push({ k: 'telegram', label: 'Telegram', href: `https://t.me/${String(M.telegram).replace(/^@|https?:\/\/t\.me\//g, '')}`, copy: true });
+  if (M.telegram) links.push({ k: 'telegram', label: 'Telegram', href: `https://t.me/${String(M.telegram).replace(/^@|https?:\/\/t\.me\//g, '')}?text=${enc}`, copy: true });
   if (M.whatsapp) links.push({ k: 'whatsapp', label: 'WhatsApp', href: `https://wa.me/${String(M.whatsapp).replace(/\D/g, '')}?text=${enc}` });
   if (M.max) links.push({ k: 'max', label: 'MAX', href: M.max, copy: true });
   const ctaHtml = links.map((l, i) => `<a class="btn ${i === 0 ? 'btn-main' : 'btn-ghost'}" href="${esc(l.href)}" target="_blank" rel="noopener" ${l.copy ? 'data-copy' : ''}>${ico[l.k]}${l.label}</a>`).join('') || '<span>Добавьте мессенджер: «добавь в витрину Telegram …»</span>';
