@@ -251,7 +251,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;display:flex;flex-w
   };
   const links = [];
   // бот-продавец: работы, цены и бриф круглые сутки (скилл «Бот-продавец»)
-  if (M.bot) links.push({ k: 'telegram', label: 'Бот: работы и заявка', href: M.bot.startsWith('http') ? M.bot : `https://t.me/${M.bot.replace(/^@/, '')}` });
+  if (M.bot) links.push({ k: 'telegram', label: 'Бот: работы и заявка', href: M.bot.startsWith('http') ? M.bot : `https://t.me/${M.bot.replace(/^@/, '')}?start=vitrina` });
   if (M.telegram) links.push({ k: 'telegram', label: 'Telegram', href: `https://t.me/${String(M.telegram).replace(/^@|https?:\/\/t\.me\//g, '')}?text=${enc}`, copy: true });
   if (M.whatsapp) links.push({ k: 'whatsapp', label: 'WhatsApp', href: `https://wa.me/${String(M.whatsapp).replace(/\D/g, '')}?text=${enc}` });
   if (M.max) links.push({ k: 'max', label: 'MAX', href: M.max, copy: true });
