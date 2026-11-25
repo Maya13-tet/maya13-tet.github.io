@@ -145,10 +145,13 @@ section.block{padding:56px 0;border-top:1px solid var(--line)}
 @media (min-width:900px){.plan--hot h3{padding-right:0}}
 .plan-desc{margin:10px 0 0;color:var(--ink-2);font-size:15px;min-height:3.4em}
 .plan-price{margin:16px 0 0;font:600 32px/1 var(--display);color:var(--accent)}
-.plan-list{list-style:none;margin:20px 0 0;padding:18px 0 0;border-top:1px dashed var(--line);display:grid;gap:10px;font-size:15px}
+.plan-list{list-style:none;margin:20px 0 24px;padding:18px 0 0;border-top:1px dashed var(--line);display:grid;gap:10px;font-size:15px}
 .plan-list li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
 .plan-list li::before{content:"\2713";color:var(--accent);font-weight:700}
-.plan-btn{margin-top:24px;justify-content:center}
+.plan-btn{margin-top:auto;justify-content:center;width:100%;transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+.plan-btn.btn-line:hover{background:var(--accent);color:#fff;box-shadow:0 14px 28px -14px var(--accent)}
+.plan-btn.btn-main:hover{transform:translateY(-2px);box-shadow:0 18px 32px -14px var(--accent)}
+.plan-btn:active{transform:scale(.97)}
 
 /* что входит в стоимость */
 .included{margin-top:52px;background:var(--ink);color:#fff;border-radius:var(--r);padding:30px 26px}
