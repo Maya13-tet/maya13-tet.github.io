@@ -407,6 +407,18 @@ ym(114705831, "init", {
     try { navigator.clipboard.writeText(msg); toast('Текст сообщения скопирован – вставьте его в чат'); } catch (_) {}
   });
 
+  // цели Метрики: клики по мессенджерам и кнопкам тарифов
+  const goal = (id) => { try { if (window.ym) ym(114705831, 'reachGoal', id); } catch (_) {} };
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]'); if (!a) return;
+    const h = a.getAttribute('href') || '';
+    if (h.includes('t.me/')) goal('click_tg');
+    else if (h.includes('wa.me/')) goal('click_wa');
+    else if (h.includes('max.ru/') || h.includes('to.max.ru/')) goal('click_max');
+    else if (/^(https?:)?\/\/(?!bmvyalta\.ru|[^/]*\.bmvyalta\.ru)/.test(h) && h.startsWith('http')) goal('click_site');
+    if (a.closest('[data-tariff]')) goal('click_tariff');
+  });
+
   // живой телефон
   const phone = (c, dur) => `<div class="phone" style="--dur:${dur}s"><div class="notch"></div><div class="screen">${c.mobile ? `<img src="${esc(c.mobile)}" alt="Сайт ${esc(c.title)} на телефоне" loading="lazy" data-shift>` : ''}</div></div>`;
   const fan = $('fan');
